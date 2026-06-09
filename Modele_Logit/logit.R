@@ -4,7 +4,7 @@
 library(mlogit)
 
 ### Lecture des données
-choix_modal<-read.table("Modele_desagrege-chaine-retour domicile travail VPTC.csv",sep=";",dec=",",header=T)
+choix_modal<-read.table("/home/jovyan/Modele_desagrege-chaine-retour domicile travail VPTC.csv",sep=";",dec=",",header=T)
 head (choix_modal, 5)
 CM<- mlogit.data(choix_modal, varying = c(1:2), choice = "Premier_mode", shape = "wide")
 
@@ -26,16 +26,3 @@ summary(model3)
 # Utilité 4
 model4<- mlogit(Premier_mode ~0|tps_gen_TC_D89+tps_gen_VP_D89+motorisation+Densite89+age18.25+age26.35+age36.45+age46.59,reflevel='VP',CM )
 summary(model4)
-
-# Utilité 5
-model5<- mlogit(Premier_mode ~0|I(tps_gen_TC_D89-tps_gen_VP_D89)+motorisation+Densite89+lnage18,reflevel='VP',CM )
-summary(model5)
-
-# Utilité 5 bis
-model5<- mlogit(Premier_mode ~tpsgenD89|permis,reflevel='VP',CM )
-summary(model5)
-
-# Utilité 6
-model6<- mlogit(Premier_mode ~0|tps_gen_TC_D89+tps_gen_VP_D89+motorisation+Densite89+I(log(age)),reflevel='VP',CM )
-summary(model6)
-
