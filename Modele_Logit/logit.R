@@ -4,7 +4,7 @@
 library(mlogit)
 
 ### Lecture des données
-choix_modal<-read.table("/home/jovyan/Modele_desagrege-chaine-retour domicile travail VPTC.csv",sep=";",dec=",",header=T)
+choix_modal<-read.table("/home/jovyan/Modele_Logit/Modele_desagrege-chaine-retour domicile travail VPTC.csv",sep=";",dec=",",header=T)
 head (choix_modal, 5)
 CM<- mlogit.data(choix_modal, varying = c(1:2), choice = "Premier_mode", shape = "wide")
 
